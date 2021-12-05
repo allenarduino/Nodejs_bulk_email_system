@@ -14,16 +14,24 @@ http.createServer((req, res) => {
   
     // Insert your API key here
     mailer.setApiKey(API_KEY);
+
+    const names=[
+      {"id":1,"name":"Davids",
+      "id":2,"name":"Juliet",
+      "id":3,"name":"Brad"
+      }
+      ];
       
     // Setting configurations
     const msg = {
-      to: ["davids@gmail.com", "your.second.email@gmail.com"],
+      to: ["davids@gmail.com", "juliet@gmail.com","brad@gmail.com"],
       from: "allenjones@jones-dev.com",
       subject: `Full Stack Developer Application`,
       html:
-        `
-        <p>Dear Davids,</p>
-
+      `
+        ${names.map(name=>{
+          return(` <p>Dear ${name},</p>`)
+        })}
         <p>Thank you so much for applying for the full stack developer role in 
         our company.
         We reviewed your application and we think you would be a great fit.
